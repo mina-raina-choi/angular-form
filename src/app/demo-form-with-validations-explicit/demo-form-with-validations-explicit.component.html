@@ -1,0 +1,33 @@
+<!-- <div class="ui raised segment">
+  <h2 class="ui header">Demo Form: with validations (explicit)</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" class="ui form" [class.error]="!myForm.valid && myForm.touched">
+
+    <div class="field" [class.error]="!sku.valid && sku.touched">
+      <label for="skuInput">SKU</label>
+      <input type="text" id="skuInput" placeholder="SKU" [formControl]="sku">
+      <div class="ui error message" *ngIf="!sku.valid">SKU is invalid</div>
+      <div class="ui error message" *ngIf="sku.hasError('required')">SKU is required</div>
+      <div class="ui error message" *ngIf="myForm.hasError('required', 'sku')">SKU is required</div>
+    </div>
+
+    Form의 validation은 FormGroup의 자식 FormControl들이 모두 유효하면 유효하다!
+    <div *ngIf="!myForm.valid" class="ui error message">Form is invalid</div>
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+</div> -->
+
+<!-- myForm.controls을 이용해서 FormControl참조 -->
+<div class="ui raised segment">
+  <h2 class="ui header">Demo Form: with validations (explicit)</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" class="ui form" [class.error]="!myForm.valid && myForm.touched">
+
+    <div class="field" [class.error]="!myForm.controls['sku'].valid && myForm.controls['sku'].touched">
+      <label for="skuInput">SKU</label>
+      <input type="text" id="skuInput" placeholder="SKU" [formControl]="myForm.controls['sku']">
+      <div class="ui error message" *ngIf="!myForm.controls['sku'].valid">SKU is invalid</div>
+      <div class="ui error message" *ngIf="myForm.hasError('required', 'sku')">SKU is required</div>
+    </div>
+    <div *ngIf="!myForm.valid" class="ui error message">Form is invalid</div>
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+</div>

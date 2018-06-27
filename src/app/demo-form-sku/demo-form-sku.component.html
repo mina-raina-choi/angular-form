@@ -1,0 +1,13 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Demo Form: Sku</h2>
+  <form class="ui form" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <div class="field">
+      <label for="skuInput">첫번째 input</label>
+      <input type="text" id="skuInput" placeholder="SKU" name="sku" ngModel>
+      <label for="skuInputTest">두번째 input</label>
+      <!-- input 태그에 ngModel을 지정하지 않으면 FormControl에 포함되지 않는군... -->
+      <input type="text" id="skuInputTest" placeholder="SKU Test" name="skutest" ngModel>
+    </div>
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+</div>
