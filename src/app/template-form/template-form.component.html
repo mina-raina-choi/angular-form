@@ -1,0 +1,54 @@
+<!-- Remove all the formGroup, formGroupName, formControl and formControlName
+   directives from our template, these are from the ReactiveFormsModule
+    and used for model driven forms. -->
+<div class="ui raised segment">
+  <h2 class="ui header">SignUp (Template Form)</h2>
+  <form class="ui form error" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <div class="field" ngModelGroup="name">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" name="firstName" [(ngModel)]="model.firstName">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" name="lastName" [(ngModel)]="model.lastName">
+      </div>
+    </div>
+    <!-- #email="ngModel" local template reference variable을 이용해 
+    f.controls.email?.valid -> email?.invalid로 간단하게 사용할 수 있다. 
+    -->
+    <div class="field" [ngClass]="{
+      'error': email?.invalid && (email?.dirty || email?.touched),
+      'success': email?.valid && (email?.dirty || email?.touched)
+ }">
+      <label>Email</label>
+      <input type="email" name="email" [(ngModel)]="model.email" required pattern="[^ @]*@[^ @]*" #email="ngModel">
+      <div class="field" *ngIf="email.errors && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required">Email is required</p>
+        <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
+      </div>
+      <!-- <pre>Valid? {{f.form.controls.email?.valid}}</pre>
+      <pre>Dirty? {{f.form.controls.email?.dirty}}</pre>
+      <pre>Touched? {{f.form.controls.email?.touched}}</pre> -->
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" required minlength="8">
+      <div class="form-control-feedback"
+		     *ngIf="password.errors && (password.dirty || password.touched)">
+			<p *ngIf="password.errors.required">Password is required</p>
+			<p *ngIf="password.errors.minlength">Password must be at least 8 characters long</p>
+		</div>
+    </div>
+    <div class="field">
+      <label for="language">Language</label>
+      <select id="language" name="language" [(ngModel)]="model.language">
+        <option value="">Please select a language</option>
+        <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="ui button " [disabled]="f.invalid">Submit</button>
+    <pre>{{f.value | json}}</pre>
+  </form>
+</div>

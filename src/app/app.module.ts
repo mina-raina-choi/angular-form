@@ -27,6 +27,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item.component';
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { TemplateFormComponent } from './template-form/template-form.component';
 
 export const examples: ExampleDef[] = [
   {label: 'Intro', name: 'Root', path: '', component: IntroComponent},
@@ -36,8 +37,9 @@ export const examples: ExampleDef[] = [
   {label: 'Custom Validation', name: 'DemoFormWithCustomValidation', path: 'custom-validation', component: DemoFormWithCustomValidationComponent},
   {label: 'Events', name: 'DemoFormWithEvents', path: 'events', component: DemoFormWithEventsComponent},
   {label: 'NgModel', name: 'DemoFormNgModel', path: 'ng-model', component: DemoFormNgModelComponent},
-  {label: 'SignUp', name: 'DemoSignUp', path: 'signup', component: SignupComponent},
-  {label: 'Reactive Form', name: 'DemoReactiveForm', path: 'reactive-form', component: ReactiveFormComponent}
+  {label: 'SignUp(Model Form)', name: 'DemoSignUp', path: 'signup', component: SignupComponent},
+  {label: 'Reactive Form', name: 'DemoReactiveForm', path: 'reactive-form', component: ReactiveFormComponent},
+  {label: 'SignUp(Template Form)', name: 'DemoTemplateForm', path: 'template-form', component: TemplateFormComponent}
 
 ];
 
@@ -50,7 +52,8 @@ const routes: Routes = [
  { path: 'events', component: DemoFormWithEventsComponent, pathMatch: 'full'},
  { path: 'ng-model', component: DemoFormNgModelComponent, pathMatch: 'full'},
  { path: 'signup', component: SignupComponent, pathMatch: 'full'},
- { path: 'reactive-form', component: ReactiveFormComponent, pathMatch: 'full'}
+ { path: 'reactive-form', component: ReactiveFormComponent, pathMatch: 'full'},
+ { path: 'template-form', component: TemplateFormComponent, pathMatch: 'full'}
 ];
 
 
@@ -67,7 +70,8 @@ const routes: Routes = [
     SidebarComponent,
     SidebarItemComponent,
     SignupComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    TemplateFormComponent
   ],
   imports: [
     BrowserModule,
