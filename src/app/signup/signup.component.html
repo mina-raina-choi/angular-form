@@ -1,6 +1,6 @@
 <div class="ui raised segment">
   <h2 class="ui header">Sign Up Form</h2>
-  <form [formGroup]="myForm" class="ui form error">
+  <form [formGroup]="myForm" class="ui form error" (ngSubmit)="onSubmit(myForm.value)">
 
     <div class="field" [ngClass]="{
       'error': firstName.invalid && firstName.dirty,
@@ -28,7 +28,7 @@
     <div class="field">
       <label for="password">Password</label>
       <input type="password" id="password" [formControl]="myForm.controls.password">
-      <div *ngIf="password.errors && (password.dirty || password.touched)">
+      <div class="field" *ngIf="password.errors && (password.dirty || password.touched)">
         <div class="ui message error" *ngIf="password.invalid && password.dirty">
           Field is invalid
         </div>
@@ -47,6 +47,11 @@
         <option *ngFor="let lang of langs" [value]="lang">{{lang}}
         </option>
       </select>
+    </div>
+    <div class="field">
+        <button type="submit"
+          class="ui button ">Submit
+  </button>
     </div>
     <div class="field">
       <pre>{{myForm.value | json}}</pre>

@@ -69,4 +69,11 @@ export class SignupComponent implements OnInit {
       language: this.language
     })
   }
+
+  onSubmit(form: any) {
+    if (this.myForm.valid) {
+      console.log("Form Submitted!:", form);
+      this.myForm.reset();
+    }
+  }
 }
