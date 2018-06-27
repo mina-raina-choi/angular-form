@@ -1,0 +1,13 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Reactive Form</h2>
+  <form class="ui form">
+    <div class="field">
+      <label for="searchInput">Search</label>
+      <input type="text" id="searchInput" placeholder="Please enter search term" [formControl]="searchField">
+      <hr/>
+      <ul>
+        <li *ngFor="let search of searches">{{ search }}</li>
+      </ul>
+    </div>
+  </form>
+</div>

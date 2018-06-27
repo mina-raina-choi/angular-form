@@ -26,6 +26,7 @@ import { ExampleDef } from './example.model';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item.component';
 import { SignupComponent } from './signup/signup.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 export const examples: ExampleDef[] = [
   {label: 'Intro', name: 'Root', path: '', component: IntroComponent},
@@ -35,7 +36,9 @@ export const examples: ExampleDef[] = [
   {label: 'Custom Validation', name: 'DemoFormWithCustomValidation', path: 'custom-validation', component: DemoFormWithCustomValidationComponent},
   {label: 'Events', name: 'DemoFormWithEvents', path: 'events', component: DemoFormWithEventsComponent},
   {label: 'NgModel', name: 'DemoFormNgModel', path: 'ng-model', component: DemoFormNgModelComponent},
-  {label: 'SignUp', name: 'DemoSignUp', path: 'signup', component: SignupComponent}
+  {label: 'SignUp', name: 'DemoSignUp', path: 'signup', component: SignupComponent},
+  {label: 'Reactive Form', name: 'DemoReactiveForm', path: 'reactive-form', component: ReactiveFormComponent}
+
 ];
 
 const routes: Routes = [
@@ -46,7 +49,8 @@ const routes: Routes = [
  { path: 'custom-validation', component: DemoFormWithCustomValidationComponent, pathMatch: 'full'},
  { path: 'events', component: DemoFormWithEventsComponent, pathMatch: 'full'},
  { path: 'ng-model', component: DemoFormNgModelComponent, pathMatch: 'full'},
- { path: 'signup', component: SignupComponent, pathMatch: 'full'}
+ { path: 'signup', component: SignupComponent, pathMatch: 'full'},
+ { path: 'reactive-form', component: ReactiveFormComponent, pathMatch: 'full'}
 ];
 
 
@@ -62,7 +66,8 @@ const routes: Routes = [
     IntroComponent,
     SidebarComponent,
     SidebarItemComponent,
-    SignupComponent
+    SignupComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,
