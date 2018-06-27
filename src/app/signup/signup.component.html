@@ -1,0 +1,30 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Sign Up Form</h2>
+  <form [formGroup]="myForm" class="ui form" >
+    <div class="field">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" [formControl]="myForm.controls.name.controls.firstName">
+
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" [formControl]="myForm.controls.name.controls.lastName">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" [formControl]="myForm.controls.email">
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" [formControl]="myForm.controls.password">
+      </div>
+  
+      <div class="form-group">
+        <label for="language">Language</label>
+        <select id="language" [formControl]="myForm.controls.language">
+          <option value="">Please select a language</option>
+          <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+          </option>
+        </select>
+      </div>
+      <pre>{{myForm.value | json}}</pre>
+    </div>
+  </form>
+</div>

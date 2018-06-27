@@ -25,16 +25,17 @@ import { IntroComponent } from './intro/intro.component';
 import { ExampleDef } from './example.model';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const examples: ExampleDef[] = [
   {label: 'Intro', name: 'Root', path: '', component: IntroComponent},
   {label: 'Sku', name: 'DemoFormSku', path: 'sku', component: DemoFormSkuComponent},
   {label: 'Sku (with Builder)', name: 'DemoFormSkuWithBuilder', path: 'sku-builder', component: DemoFormSkuWithBuilderComponent},
   {label: 'Validation Explicit', name: 'DemoFormValidationsExplicit', path: 'validations-explicit', component: DemoFormWithValidationsExplicitComponent},
-  // {label: 'Validation Shorthand', name: 'DemoFormValidationsShorthand', path: 'validations-shorthand', component: DemoFormWithValidationsShorthandComponent},
   {label: 'Custom Validation', name: 'DemoFormWithCustomValidation', path: 'custom-validation', component: DemoFormWithCustomValidationComponent},
   {label: 'Events', name: 'DemoFormWithEvents', path: 'events', component: DemoFormWithEventsComponent},
   {label: 'NgModel', name: 'DemoFormNgModel', path: 'ng-model', component: DemoFormNgModelComponent},
+  {label: 'SignUp', name: 'DemoSignUp', path: 'signup', component: SignupComponent}
 ];
 
 const routes: Routes = [
@@ -42,10 +43,10 @@ const routes: Routes = [
  { path: 'sku', component: DemoFormSkuComponent, pathMatch: 'full' },
  { path: 'sku-builder', component: DemoFormSkuWithBuilderComponent, pathMatch: 'full' },
  { path: 'validations-explicit', component: DemoFormWithValidationsExplicitComponent, pathMatch: 'full'},
-//  { path: 'validations-shorthand', component: DemoFormWithValidationsShorthandComponent, pathMatch: 'full'},
  { path: 'custom-validation', component: DemoFormWithCustomValidationComponent, pathMatch: 'full'},
  { path: 'events', component: DemoFormWithEventsComponent, pathMatch: 'full'},
- { path: 'ng-model', component: DemoFormNgModelComponent, pathMatch: 'full'}
+ { path: 'ng-model', component: DemoFormNgModelComponent, pathMatch: 'full'},
+ { path: 'signup', component: SignupComponent, pathMatch: 'full'}
 ];
 
 
@@ -60,7 +61,8 @@ const routes: Routes = [
     DemoFormNgModelComponent,
     IntroComponent,
     SidebarComponent,
-    SidebarItemComponent
+    SidebarItemComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
