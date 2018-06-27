@@ -1,29 +1,54 @@
 <div class="ui raised segment">
   <h2 class="ui header">Sign Up Form</h2>
-  <form [formGroup]="myForm" class="ui form" >
-    <div class="field">
+  <form [formGroup]="myForm" class="ui form error">
+
+    <div class="field" [ngClass]="{
+      'error': firstName.invalid && firstName.dirty,
+      'success': firstName.valid && firstName.dirty
+    }">
       <label for="firstName">First Name</label>
       <input type="text" id="firstName" [formControl]="myForm.controls.name.controls.firstName">
-
+    </div>
+    <div class="field">
       <label for="lastName">Last Name</label>
       <input type="text" id="lastName" [formControl]="myForm.controls.name.controls.lastName">
-
+    </div>
+    <div class="field" [ngClass]="{
+      'error' : myForm.controls.email.invalid && myForm.controls.email.dirty,
+      'success' : myForm.controls.email.valid && myForm.controls.email.dirty
+    }">
       <label for="email">Email</label>
       <input type="email" id="email" [formControl]="myForm.controls.email">
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" [formControl]="myForm.controls.password">
+      <!-- <pre>Dirty? {{ myForm.controls.email.dirty }}</pre>
+      <pre>Pristine? {{ myForm.controls.email.pristine }}</pre>
+      <pre>Touched? {{ myForm.controls.email.touched }}</pre>
+      <pre>Valid? {{ myForm.controls.email.valid }}</pre>
+      <pre>Invalid? {{ myForm.controls.email.invalid }}</pre> -->
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" [formControl]="myForm.controls.password">
+      <div *ngIf="password.errors && (password.dirty || password.touched)">
+        <div class="ui message error" *ngIf="password.invalid && password.dirty">
+          Field is invalid
+        </div>
+        <div class="ui message error" *ngIf="password.errors.required">
+          Password is required
+        </div>
+        <div class="ui message error" *ngIf="password.errors.minlength">
+          Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}}
+          characters </div>
       </div>
-  
-      <div class="form-group">
-        <label for="language">Language</label>
-        <select id="language" [formControl]="myForm.controls.language">
-          <option value="">Please select a language</option>
-          <option *ngFor="let lang of langs" [value]="lang">{{lang}}
-          </option>
-        </select>
-      </div>
+    </div>
+    <div class="field">
+      <label for="language">Language</label>
+      <select id="language" [formControl]="myForm.controls.language">
+        <option value="">Please select a language</option>
+        <option *ngFor="let lang of langs" [value]="lang">{{lang}}
+        </option>
+      </select>
+    </div>
+    <div class="field">
       <pre>{{myForm.value | json}}</pre>
     </div>
   </form>
